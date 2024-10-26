@@ -1,16 +1,9 @@
-#!/usr/bin/python3
-
-# Adobe pdfMark Reference
-# https://opensource.adobe.com/dc-acrobat-sdk-docs/acrobatsdk/pdfs/acrobatsdk_pdfmark.pdf
-
-# in toc file, you must close the parenthesis()!! otherwise, gs fails.
-
-
 import sys
 import re
 import subprocess
 import tempfile, os, sys
 import argparse
+
 
 class Entry():
 
@@ -77,13 +70,13 @@ def toc_to_elist(toc):
         if not line:
             continue
 
-        if line[0] == '+':
-            offset += int(line[1:])
-            continue
+        # if line[0] == '+':
+        #     offset += int(line[1:])
+        #     continue
 
-        if line[0] == '-':
-            offset -= int(line[1:])
-            continue
+        # if line[0] == '-':
+        #     offset -= int(line[1:])
+        #     continue
 
         try:
             (name, page) = re.findall(r'(.*) (\d+)$', line)[0]
